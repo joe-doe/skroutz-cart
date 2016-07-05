@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2870a09b-e8f1-4ad5-a30e-d3096bd7bc33" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/db.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/api_routes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/non_api_routes.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/base.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mongo_db.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/process.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/carts.py" afterPath="$PROJECT_DIR$/carts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/model.py" afterPath="$PROJECT_DIR$/model/model.py" />
     </list>
     <ignored path="skroutz-cart.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +50,8 @@
       <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="121" column="24" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
+            <state relative-caret-position="216">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#24#53#0" expanded="true" />
               </folding>
@@ -494,7 +486,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -611,8 +603,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="121" column="24" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
+        <state relative-caret-position="216">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#24#53#0" expanded="true" />
           </folding>

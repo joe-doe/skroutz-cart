@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 import urllib2
-from carts import cart_1
 
 
 class Model(object):
@@ -59,21 +58,18 @@ class Model(object):
                         pass
 
                     if entry["price"] != 0:
-                        # print entry
-                        # print"-----"*10
                         self.db.mongodb[self.config.get("feed_collection")]\
                             .insert(entry)
-            # print o
-        return self.process()
+        self.process()
+        return self.find_best()
 
     def process(self):
         items_id = self.db.mongodb[self.config.get("feed_collection")]\
             .distinct('item_id')
         shops_id = self.db.mongodb[self.config.get("feed_collection")]\
             .distinct('shop_id')
-        # print items_id
-        # print shops_id
 
+        shop_carts = []
         for shop_id in shops_id:
             shop = self.db.mongodb[self.config.get("feed_collection")].\
                 find_one({"shop_id": shop_id})
@@ -88,6 +84,7 @@ class Model(object):
                 "metaforika":item_metaforika,
                 "antikatavoli": item_anikatavoli,
                 "items": [],
+                "items_names": [],
                 "items_length": 0,
                 "items_price": 0
             }
@@ -99,27 +96,25 @@ class Model(object):
                 item = {}
                 if item_info:
                     item["item_name"] = unicode(item_info["item_name"])
+                    shop_cart["items_names"].append(item["item_name"])
                     item["item_price"] = item_info["price"]
                     shop_cart["items_price"] += item_info["price"]
                     shop_cart["items"].append(item)
 
             shop_cart["items_length"] = len(shop_cart["items"])
+            shop_carts.append(shop_cart)
             self.db.mongodb[self.config.get("processed_collection")].insert(shop_cart)
-            return shop_cart
+        return shop_carts
 
     def find_best(self):
         result = list(self.db.mongodb[self.config.get("processed_collection")]
                       .find({}, {"shop_name": 1,
                                 "items_length": 1,
+                                "items_names": 1,
                                 "items_price": 1,
                                 "metaforika": 1,
                                 "antikatavoli": 1,
                                 "_id": 0})
                       .sort([("items_length", -1),
                              ("items_price", 1)]))
-
-        # result.sort(key=lambda shop_data: shop_data["items_price"])
-        for i in result:
-            # print "price:{}, items:{}".format(i["items_price"], i["items_length"])
-            print i
         return result
