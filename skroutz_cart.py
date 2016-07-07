@@ -46,7 +46,5 @@ initialize_routes(app, api, model)
 
 # main
 if __name__ == '__main__':
-        # model.store()
-        # model.process()
-        app.run(debug=False)
+    app.run(debug=False)
 

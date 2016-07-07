@@ -1,0 +1,11 @@
+body {
+  margin: 68px;
+}
+
+.with-new-lines {
+    white-space:pre
+}
+
+.new-line {
+    border-bottom: 1px solid #eee;
+}

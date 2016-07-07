@@ -1,52 +1,67 @@
 {% extends "base.html" %}
 
 {% block header %}
-charts for available items
+προσθέστε ένα-ένα τα URL των προϊόντων και μετά πατήστε <b>υπολογισμός</b>
 {% endblock %}
 
 {% block content %}
-    {% for item in items %}
-    <div class="row relative-position">
-        <div class="col-xs-3 ">
-            <div class="panel panel-default">
-              <div class="panel-heading">specs</div>
-              <div class="panel-body" id="chart_specs_{{ item }}"></div>
-            </div>
-        </div>
-        <div >
-            <h2>{{item}}</h2>
-            <div class="col-xs-5">
-                <div class="panel panel-default">
-                  <div class="panel-heading">quick specs</div>
-                  <div class="panel-body" id="chart_quick_specs_{{ item }}"></div>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="panel panel-default">
-                  <div class="panel-heading">image</div>
-                  <div class="panel-body">
-                      <img src="" id="chart_image_{{ item }}">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">legend</div>
-                    <div class="panel-body" id="chart_legend_{{ item }}"></div>
-                </div>
-            </div>
+<div class="row well">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>προσθέστε το skroutz URL του προϊόντος</b>
+      </div><!-- panel-heading -->
+      <div class="panel-body">
+        <div class="input-group">
+          <input type="text" class="form-control" id="item-input" placeholder="item URL">
+          <span class="input-group-btn">
+            <button class="btn btn-default" id="add-item" type="button">add</button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- panel-body -->
+    </div><!-- panel -->
+  </div><!-- col-6 -->
 
-            <h3>graph</h3>
-            <div class="col-xs-9 col-xs-offset-3 set-to-bottom">
-                <canvas id="chart_{{ item }}"></canvas>
-            </div>
+  <div class="col-lg-6 hide" id="items-list">
+    <div class="table-responsive">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>περιγραφή προϊόντων</b>
+        </div><!-- panel-heading -->
+        <div class="panel-body">
+          <table class="table table-striped" id="output-table">
+            <thead>
+              <th>#</th>
+              <th>όνομα</th>
+            </thead>
+              <tbody>
+              </tbody>
+          </table>
+        </div><!-- panel-body -->
+      </div><!-- panel -->
+   </div><!-- table-responsive -->
+  </div><!-- col-6 -->
+  <div class="row">
+    <button class="btn btn-default hide" id="calculate" type="button">υπολογισμός</button>
+  </div>
+</div><!-- /.row -->
+
+<div class="row well hide" id="results-row">
+    <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <b>καλάθια</b>
+      </div><!-- panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive" id="results">
         </div>
-    </div>
-    <hr class="divider">
-    {% endfor %}
+      </div><!-- panel-body -->
+    </div><!-- panel -->
+  </div><!-- col-6 -->
+</div><!-- row -->
 {% endblock %}
 
 
 {% block extra_js %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/pc.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/add_item.js') }}"></script>
 {% endblock %}
