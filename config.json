@@ -1,6 +1,6 @@
 {
   "uri": "mongodb://localhost:27017/",
-  "database": "skroutz_cart",
+  "database": "skroutz-cart",
   "feed_collection": "feed",
   "processed_collection": "processed",
   "DEBUG": false
