@@ -1,0 +1,1 @@
+web: gunicorn skroutz_cart:app -w 1 --log-file -
