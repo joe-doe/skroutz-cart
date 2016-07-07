@@ -30,6 +30,7 @@ $( "#add-item" ).click(function() {
 $( "#calculate" ).click(function() {
 
     $("#results-row").removeClass('hide');
+    $("#results").empty();
 
     var data = {
         items_url_list: item_list
