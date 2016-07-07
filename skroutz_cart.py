@@ -28,6 +28,7 @@ except IOError:
 # get sensible credentials from environment variables
 try:
     config['uri'] = str(os.environ['mongodb_uri'])
+    config['DEBUG'] = str(os.environ['DEBUG'])
 except KeyError:
     pass
 
@@ -45,6 +46,7 @@ initialize_routes(app, api, model)
 # initialize_schedule_jobs(config, model)
 
 # main
-if __name__ == '__main__':
-    app.run(debug=False)
+if config.get('DEBUG', False):
+    if __name__ == '__main__':
+        app.run(debug=False)
 
