@@ -117,4 +117,6 @@ class Model(object):
                                 "_id": 0})
                       .sort([("items_length", -1),
                              ("items_price", 1)]))
+        self.db.mongodb[self.config.get("processed_collection")].drop()
+        self.db.mongodb[self.config.get("feed_collection")].drop()
         return result
