@@ -2,10 +2,17 @@ var item_list = [];
 
 $( "#add-item" ).click(function() {
 
+    var item = $('#item-input').val();
+    var regex = "^https://www.skroutz.gr";
+    var valid_url = item.match(regex);
+
+    if (!valid_url){
+        alert("μη αποδεκτό URL");
+        return;
+    }
     $("#items-list").removeClass('hide');
     $("#calculate").removeClass('hide');
 
-    var item = $('#item-input').val();
     item_list.push(item);
 
     var body = $("#output-table").find('tbody');
