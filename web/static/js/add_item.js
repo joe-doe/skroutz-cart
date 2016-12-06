@@ -3,6 +3,7 @@ var item_list = [];
 $( "#add-item" ).click(function() {
 
     var item = $('#item-input').val();
+    var item_quantity = $('#item-quantity').val();
     var regex = "^https://www.skroutz.gr";
     var valid_url = item.match(regex);
 
@@ -13,18 +14,22 @@ $( "#add-item" ).click(function() {
     $("#items-list").removeClass('hide');
     $("#calculate").removeClass('hide');
 
-    item_list.push(item);
+    full_item = {item: item, item_quantity:item_quantity};
+    item_list.push(full_item);
 
     var body = $("#output-table").find('tbody');
 
     var row = $('<tr></tr>');
     var cell = $('<td></td>').text(item_list.length);
     row.append(cell);
+    var cell = $('<td></td>').text(item_quantity);
+    row.append(cell);
     var cell = $('<td></td>').text(item);
     row.append(cell);
 
     body.append(row);
     $('#item-input').val('')
+    $('#item-quantity').val('')
 });
 
 $( "#calculate" ).click(function() {
@@ -33,7 +38,7 @@ $( "#calculate" ).click(function() {
     $("#results").empty();
 
     var data = {
-        items_url_list: item_list
+        full_items: item_list
     }
 
 // for testing
@@ -83,9 +88,16 @@ $( "#calculate" ).click(function() {
             body.append(row);
 
             var row = $('<tr></tr>').addClass('bar');
-            var cell = $('<td></td>').addClass('bar').text("αριθμός προϊόντων");
+            var cell = $('<td></td>').addClass('bar').text("διαφορετικά προϊόντα");
             row.append(cell);
             var cell = $('<td></td>').addClass('bar').text(entry.items_length);
+            row.append(cell);
+            body.append(row);
+
+            var row = $('<tr></tr>').addClass('bar');
+            var cell = $('<td></td>').addClass('bar').text("συνολικά τεμάχια");
+            row.append(cell);
+            var cell = $('<td></td>').addClass('bar').text(entry.items_total);
             row.append(cell);
             body.append(row);
 

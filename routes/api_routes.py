@@ -22,9 +22,9 @@ def register_api_routes(api, model):
 
         @api.doc(body=request_model)
         def post(self):
-            item = request.get_json()['items_url_list']
+            full_items = request.get_json()['full_items']
 
-            response = model.store(item)
+            response = model.store(full_items)
             return response
 
     api.add_resource(FindBest, '/find_best')

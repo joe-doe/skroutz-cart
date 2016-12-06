@@ -3,6 +3,6 @@
   "database": "skroutz-cart",
   "feed_collection": "feed",
   "processed_collection": "processed",
-  "DEBUG": false
+  "DEBUG": true
 
 }

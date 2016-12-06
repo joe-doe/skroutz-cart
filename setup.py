@@ -18,6 +18,9 @@ setup(
         'pymongo',
         'gunicorn',
         'bs4',
-        'schedule'
+        'schedule',
+        "flake8",
+        "Flask-Cors",
+        "requests"
     ]
 )
