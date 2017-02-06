@@ -1,1 +1,1 @@
-web: gunicorn skroutz_cart:app -w 1 --log-file -
+web: gunicorn skroutz_cart:app --timeout 100 -w 1 --log-file -
