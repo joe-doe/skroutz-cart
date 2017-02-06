@@ -19,11 +19,15 @@ class Model(object):
             soup = BeautifulSoup(page, 'html.parser')
             prices = soup.find(id='prices')
             o = 0
-            
-            item_id = soup.find('div', class_='sku-card').a['data-sku-id']
+
+            try:
+                item_id = soup.find('div', class_='sku-card').a['data-sku-id']
+            except KeyError:
+                item_id = soup.find('div', class_='sku-card').a['data-id']
             item_name = soup.find('div', class_='sku-card').h2.a.contents
             for li in prices.find_all('li'):
-                
+                if li['class'][0] == 'product-ad':
+                    continue
                 entry = {"item_id": item_id,
                          "item_name": unicode(item_name[0]),
                          "shop_id": 0,
@@ -38,6 +42,8 @@ class Model(object):
                 else:
                     try:
                         entry["shop_id"] = li.get('data-shopid')
+                        if not li.a.img.get('alt'):
+                            print("A")
                         entry["shop_name"] = li.a.img['alt']
                         div = li.find('div', class_='price')
                         try:
